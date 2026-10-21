@@ -3,31 +3,6 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.target);
-
-    const data = {
-      name: formData.get("FirstName"),
-      email: formData.get("Email"),
-      message: formData.get("Message"),
-    };
-
-    const res = await fetch("/api/test", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    const result = await res.json();
-    console.log(result);
-
-    alert("Message Sent ✅");
-    e.target.reset();
-  };
 
   return (
     <motion.section
@@ -40,7 +15,7 @@ export default function Contact() {
     >
 
       <form
-        onSubmit={handleSubmit}
+        
         className="w-full max-w-4xl bg-white/5 backdrop-blur-md p-8 rounded-2xl shadow-lg flex flex-col gap-8"
       >
 

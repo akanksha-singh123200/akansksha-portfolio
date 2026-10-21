@@ -7,6 +7,7 @@ export default function About() {
     <section id="about" className="min-h-screen lg:mt-0 md:mt-2 mt-12 flex items-center px-6">
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 items-center">
 
+      
         {/* Left Text */}
         <motion.p
           initial={{ opacity: 0, y: 40 }}

@@ -1,9 +1,7 @@
 
 import mysql from "mysql2/promise";
-import fs from "node:fs";
-import path from "node:path";
 
-const caPath = path.join(process.cwd(), "certs", "ca.pem");
+const caCert = process.env.DB_CA_CERT?.replace(/\\n/g, "\n");
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
@@ -12,7 +10,7 @@ const pool = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   ssl: {
-    ca: fs.readFileSync(caPath, "utf8"),
+    ca: caCert,
     rejectUnauthorized: true,
   },
   waitForConnections: true,
